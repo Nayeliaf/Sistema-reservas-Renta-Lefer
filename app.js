@@ -5,8 +5,7 @@
 
 // ========== CONFIGURACIÓN ==========
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3pKdJa2H9dm1-7Qytj5D_06WOrbaygdbLpOSooxCs5-PGPTcdlHV0a_7rY4aulXeBqQ/exec"
-const DEMO_MODE = !APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('https://script.google.com/macros/s/AKfycbx3pKdJa2H9dm1-7Qytj5D_06WOrbaygdbLpOSooxCs5-PGPTcdlHV0a_7rY4aulXeBqQ/exec');
-
+const DEMO_MODE = !APPS_SCRIPT_URL;
 // ========== ESTADO GLOBAL ==========
 const state = {
   checkin: null,
