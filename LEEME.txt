@@ -1,0 +1,12 @@
+RENTA LEFER C.A. — DEMO DE RESERVAS
+
+Inventario: 4 Apartamentos Triples (capacidad 3 personas) y 1 Apartamento Doble (capacidad 2 personas).
+Tarifa: $30 por apartamento por día, para ambos tipos.
+Incluye: cocina, lavaplatos, baño, sala, comedor, nevera y servicio de limpieza.
+
+La demo inicia en modo local para que veas los nombres y precios corregidos. Para conectar Google Sheets, despliega el archivo Code.gs actualizado como aplicación web y pega la URL /exec en la constante APPS_SCRIPT_URL de app.js. No uses una implementación antigua: podría devolver nombres y tarifas anteriores.
+
+Métodos de pago: pendientes de recibir los datos oficiales.
+Correo de la empresa: el de la factura, pendiente de validación.
+
+Los datos de demostración se guardan en el navegador y no equivalen a reservas reales hasta configurar el backend.
