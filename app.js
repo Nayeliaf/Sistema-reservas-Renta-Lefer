@@ -363,7 +363,28 @@ async function initPublic() {
 
 async function loadConfig() {
   const cfg = await apiGet('config');
-  state.config = cfg.error ? getDefaultConfig() : cfg;
+
+  if (cfg.error) {
+    state.config = getDefaultConfig();
+    return;
+  }
+
+  const defaults = getDefaultConfig();
+
+  state.config = {
+    ...cfg,
+    roomTypes: (cfg.roomTypes || defaults.roomTypes).map(type => {
+      const defaultType = defaults.roomTypes.find(
+        item => item.id === type.id
+      );
+
+      return {
+        ...defaultType,
+        ...type,
+        photo: type.photo || defaultType?.photo
+      };
+    })
+  };
 }
 
 async function loadBcvRate() {
