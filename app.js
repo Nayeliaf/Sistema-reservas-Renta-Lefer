@@ -445,8 +445,10 @@ function renderRoomTypes() {
 
     return `
       <article class="room-card">
-        <div class="room-photo" style="background-image:url('${esc(type.photo)}')">
-          <span class="photo-label">${esc(type.name)}</span>
+<div class="room-photo" style="background-image:url('${esc(
+ (type.id === 'triple' ? './triple.jpeg' : './doble.jpeg')
+)}')">          
+<span class="photo-label">${esc(type.name)}</span>
           <span class="availability-pill ${available ? 'available' : 'soldout'}">
             ${available ? `${available} disponible${available === 1 ? '' : 's'}` : 'Agotada'}
           </span>
