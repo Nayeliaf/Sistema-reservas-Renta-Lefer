@@ -4,9 +4,8 @@
 // ================================================================
 
 // ========== CONFIGURACIÓN ==========
-const APPS_SCRIPT_URL = ''; // Pega aquí la URL /exec DESPUÉS de desplegar el Code.gs actualizado
-// Si está vacío, usa modo demo (localStorage)
-const DEMO_MODE = !APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('TU_URL');
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpHA2hXj39w7mx2peRv8T54KJ9W9BowNwsCylbRWchtMqDmbJjz01t4iPc-1I1dZysuQ/exec"
+const DEMO_MODE = !APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('https://script.google.com/macros/s/AKfycbxpHA2hXj39w7mx2peRv8T54KJ9W9BowNwsCylbRWchtMqDmbJjz01t4iPc-1I1dZysuQ/exec');
 
 // ========== ESTADO GLOBAL ==========
 const state = {
