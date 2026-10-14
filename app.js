@@ -4,8 +4,8 @@
 // ================================================================
 
 // ========== CONFIGURACIÓN ==========
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpHA2hXj39w7mx2peRv8T54KJ9W9BowNwsCylbRWchtMqDmbJjz01t4iPc-1I1dZysuQ/exec"
-const DEMO_MODE = !APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('https://script.google.com/macros/s/AKfycbxpHA2hXj39w7mx2peRv8T54KJ9W9BowNwsCylbRWchtMqDmbJjz01t4iPc-1I1dZysuQ/exec');
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3pKdJa2H9dm1-7Qytj5D_06WOrbaygdbLpOSooxCs5-PGPTcdlHV0a_7rY4aulXeBqQ/exec"
+const DEMO_MODE = !APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('https://script.google.com/macros/s/AKfycbx3pKdJa2H9dm1-7Qytj5D_06WOrbaygdbLpOSooxCs5-PGPTcdlHV0a_7rY4aulXeBqQ/exec');
 
 // ========== ESTADO GLOBAL ==========
 const state = {
@@ -369,12 +369,23 @@ async function loadConfig() {
 
 async function loadBcvRate() {
   const r = await apiGet('rate');
-  if (r.rate) {
-    state.bcvRate = r.rate;
-    document.querySelectorAll('.bcv-rate').forEach(el => el.textContent = state.bcvRate.toFixed(2));
+
+  if (r.rate && Number(r.rate) > 0) {
+    state.bcvRate = Number(r.rate);
+
+    document.querySelectorAll('.bcv-rate').forEach(el => {
+      el.textContent = state.bcvRate.toLocaleString('es-VE', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 4
+      });
+    });
+
+    renderRoomTypes();
+    updatePublicSummary();
+  } else {
+    console.error('No se pudo cargar la tasa del BCV:', r.error || r);
   }
 }
-
 // Devuelve cuántas unidades de un tipo siguen libres para las fechas elegidas.
 // La asignación real se vuelve a verificar en Apps Script al guardar la reserva.
 function availableUnits(type, a, b) {
